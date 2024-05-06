@@ -1,6 +1,7 @@
 from flask import Flask, request, jsonify
-
+from flask_cors import CORS
 app = Flask(__name__)
+CORS(app)
 
 connection_string = 'DRIVER={SQL Server};SERVER=你的服务器地址;DATABASE=你的数据库;UID=你的用户名;PWD=你的密码'
 
