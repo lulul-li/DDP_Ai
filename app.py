@@ -16,7 +16,7 @@ def add_message():
     name = data['name']
     msg = data['message']
     try:
-        return jsonify({'message': 'User added successfully'}), 200
+        return jsonify({'message': 'ML processing.....'}), 200
         # with pyodbc.connect(connection_string) as conn:
         #     curses = conn.cursor()asdasdas
         #     return jsonify({'message': 'User added successfully'}), 200
