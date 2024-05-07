@@ -18,7 +18,7 @@ def hello_world():  # put application's code here
 
 
 @app.route('/api-predict', methods=['POST'])
-def add_message():
+def predict():
     data = request.json
     msg = data['inputData']
     try:
