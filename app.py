@@ -1,9 +1,15 @@
+import pickle
+
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+
 app = Flask(__name__)
 CORS(app)
 
 connection_string = 'DRIVER={SQL Server};SERVER=你的服务器地址;DATABASE=你的数据库;UID=你的用户名;PWD=你的密码'
+
+with open("ML_Model_Package.pkl", 'rb') as f:
+    model = pickle.load(f)
 
 
 @app.route('/')
@@ -11,13 +17,21 @@ def hello_world():  # put application's code here
     return 'Hello World!'
 
 
-@app.route('/add_message', methods=['POST'])
+@app.route('/api-predict', methods=['POST'])
 def add_message():
     data = request.json
-    name = data['name']
-    msg = data['message']
+    msg = data['inputData']
     try:
-        return jsonify({'message': 'ML processing.....'}), 200
+
+        return jsonify(
+            {
+                'prediction': 'our predictions is: Depressed',
+                'message': 'Depressed',
+                'article1': 'article1....',
+                'article2': 'article2....',
+                'article3': 'article3....',
+
+            }), 200
         # with pyodbc.connect(connection_string) as conn:
         #     curses = conn.cursor()asdasdas
         #     return jsonify({'message': 'User added successfully'}), 200
